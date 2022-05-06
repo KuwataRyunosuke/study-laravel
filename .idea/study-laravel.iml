@@ -120,5 +120,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="flatpickr" level="application" />
+    <orderEntry type="library" name="ja" level="application" />
+    <orderEntry type="library" name="material_blue" level="application" />
   </component>
 </module>
