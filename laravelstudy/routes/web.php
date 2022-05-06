@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
+
+Auth::routes();
 
 Route::get('/folders/{id}/tasks','App\Http\Controllers\TaskController@index')->name('tasks.index');
 
@@ -28,3 +30,7 @@ Route::get('/folders/create', 'App\Http\Controllers\FolderController@showCreateF
 Route::post('/folders/create', 'App\Http\Controllers\FolderController@create');
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

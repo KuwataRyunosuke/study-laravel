@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
-            $table->increments('id');
-            $table->Integer('folder_id')->unsigned();
-            $table->string('title', 100);
-            $table->date('due_date');
-            $table->integer('status')->default(1);
-            $table->timestamps();
+        Schema::table('folders', function (Blueprint $table) {
+            $table->bigInteger('user_id')->unsigned();
 
             // 外部キーを設定する
-            $table->foreign('folder_id')->references('id')->on('folders');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -33,6 +28,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::table('folders', function (Blueprint $table) {
+            $table->dropColumn('user_id');
+        });
     }
 };

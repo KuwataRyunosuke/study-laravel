@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     use HasFactory;
+
     /**
      * 状態定義
      */
@@ -18,11 +19,29 @@ class Task extends Model
         3 => [ 'label' => '完了', 'class' => '' ],
     ];
 
+
+    /**
+     * 状態のラベル
+     * @return string
+     */
+    public function getStatusLabelAttribute(): string
+    {
+        // 状態値
+        $status = $this->attributes['status'];
+
+        // 定義されていなければ空文字を返す
+        if (!isset(self::STATUS[$status])) {
+            return '';
+        }
+
+        return self::STATUS[$status]['label'];
+    }
+
     /**
      * 状態を表すHTMLクラス
      * @return string
      */
-    public function getStatusClassAttribute()
+    public function getStatusClassAttribute(): string
     {
         // 状態値
         $status = $this->attributes['status'];
@@ -33,13 +52,14 @@ class Task extends Model
         }
 
         return self::STATUS[$status]['class'];
+
     }
 
     /**
      * 整形した期限日
      * @return string
      */
-    public function getFormattedDueDateAttribute()
+    public function getFormattedDueDateAttribute(): string
     {
         return Carbon::createFromFormat('Y-m-d', $this->attributes['due_date'])
             ->format('Y/m/d');
