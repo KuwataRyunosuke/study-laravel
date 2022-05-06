@@ -117,6 +117,7 @@
       <excludeFolder url="file://$MODULE_DIR$/laravelstudy/vendor/symfony/string" />
       <excludeFolder url="file://$MODULE_DIR$/laravelstudy/vendor/symfony/translation" />
       <excludeFolder url="file://$MODULE_DIR$/laravelstudy/vendor/fakerphp/faker" />
+      <excludeFolder url="file://$MODULE_DIR$/laravelstudy/vendor/laravel/ui" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
