@@ -4,12 +4,9 @@ namespace App\Policies;
 
 use App\Models\Folder;
 use App\Models\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
 
 class FolderPolicy
 {
-    use HandlesAuthorization;
-
     /**
      * フォルダの閲覧権限
      * @param User $user
